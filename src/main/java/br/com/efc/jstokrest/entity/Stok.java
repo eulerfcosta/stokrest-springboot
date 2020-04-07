@@ -10,31 +10,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 /**
  * @author euler
  *
  */
+
 @Entity
-public class User {
+public class Stok {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false , unique = true)
 	private String name;
 	
-	@Column(nullable = false, unique = true)
-	private String email;
+	@ManyToOne	
+	private StokType stokType;
 	
-	@Column(nullable = false)
-	private String password;
-		
+	@ManyToOne	
+	private Client client;
+	
 	@Column(nullable = false , updatable = false)
 	@CreationTimestamp
 	private Timestamp created_at;
@@ -43,17 +44,19 @@ public class User {
 	@UpdateTimestamp
 	private Timestamp updated_at;
 
+	
+	
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -72,31 +75,31 @@ public class User {
 	}
 
 	/**
-	 * @return the email
+	 * @return the stokType
 	 */
-	public String getEmail() {
-		return email;
+	public StokType getStokType() {
+		return stokType;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param stokType the stokType to set
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setStokType(StokType stokType) {
+		this.stokType = stokType;
 	}
 
 	/**
-	 * @return the password
+	 * @return the client
 	 */
-	public String getPassword() {
-		return password;
+	public Client getClient() {
+		return client;
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param client the client to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	/**
@@ -128,6 +131,6 @@ public class User {
 	}
 	
 	
-	
+
 
 }

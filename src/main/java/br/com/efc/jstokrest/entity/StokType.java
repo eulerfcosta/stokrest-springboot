@@ -13,28 +13,22 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 /**
  * @author euler
  *
  */
+
 @Entity
-public class User {
+public class StokType {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
-	@Column(nullable = false)
-	private String name;
+	private Long id;
 	
 	@Column(nullable = false, unique = true)
-	private String email;
+	private String name;
 	
-	@Column(nullable = false)
-	private String password;
-		
 	@Column(nullable = false , updatable = false)
 	@CreationTimestamp
 	private Timestamp created_at;
@@ -43,17 +37,18 @@ public class User {
 	@UpdateTimestamp
 	private Timestamp updated_at;
 
+	
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -69,34 +64,6 @@ public class User {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	/**
@@ -129,5 +96,6 @@ public class User {
 	
 	
 	
-
+	
+	
 }

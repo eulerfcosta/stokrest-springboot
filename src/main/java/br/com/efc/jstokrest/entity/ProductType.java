@@ -13,47 +13,42 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 /**
  * @author euler
  *
  */
+
 @Entity
-public class User {
+public class ProductType {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false , unique = true)
 	private String name;
 	
-	@Column(nullable = false, unique = true)
-	private String email;
-	
-	@Column(nullable = false)
-	private String password;
-		
-	@Column(nullable = false , updatable = false)
+	@Column(nullable = true , updatable = false)
 	@CreationTimestamp
 	private Timestamp created_at;
 	
 	@Column(nullable = true , updatable = true)
 	@UpdateTimestamp
 	private Timestamp updated_at;
+	
 
 	/**
-	 * @return the id
+	 * @return the gid
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param gid the gid to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -69,34 +64,6 @@ public class User {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	/**
@@ -126,7 +93,6 @@ public class User {
 	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
 	}
-	
 	
 	
 

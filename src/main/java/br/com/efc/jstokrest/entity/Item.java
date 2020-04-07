@@ -10,93 +10,94 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 /**
  * @author euler
  *
  */
+
 @Entity
-public class User {
-	
+public class Item {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
-	@Column(nullable = false)
-	private String name;
-	
+	private Long id;
+
 	@Column(nullable = false, unique = true)
-	private String email;
-	
-	@Column(nullable = false)
-	private String password;
-		
-	@Column(nullable = false , updatable = false)
+	private String sn;
+
+	@ManyToOne
+	private Product product;
+
+	@ManyToOne
+	private Stok stok;
+
+	@Column(nullable = false, updatable = false)
 	@CreationTimestamp
 	private Timestamp created_at;
-	
-	@Column(nullable = true , updatable = true)
+
+	@Column(nullable = true, updatable = true)
 	@UpdateTimestamp
 	private Timestamp updated_at;
 
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	/**
-	 * @return the name
+	 * @return the sn
 	 */
-	public String getName() {
-		return name;
+	public String getSn() {
+		return sn;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param sn the sn to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setSn(String sn) {
+		this.sn = sn;
 	}
 
 	/**
-	 * @return the email
+	 * @return the product
 	 */
-	public String getEmail() {
-		return email;
+	public Product getProduct() {
+		return product;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param product the product to set
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	/**
-	 * @return the password
+	 * @return the stok
 	 */
-	public String getPassword() {
-		return password;
+	public Stok getStok() {
+		return stok;
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param stok the stok to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setStok(Stok stok) {
+		this.stok = stok;
 	}
 
 	/**
@@ -126,8 +127,5 @@ public class User {
 	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
 	}
-	
-	
-	
 
 }

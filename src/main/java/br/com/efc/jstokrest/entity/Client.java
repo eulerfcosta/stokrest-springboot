@@ -13,121 +13,163 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 /**
  * @author euler
  *
  */
+
+/**
+ * @author euler
+ *
+ */
+/**
+ * @author euler
+ *
+ */
+/**
+ * @author euler
+ *
+ */
+/**
+ * @author euler
+ *
+ */
+/**
+ * @author euler
+ *
+ */
+/**
+ * @author euler
+ *
+ */
+/**
+ * @author euler
+ *
+ */
 @Entity
-public class User {
-	
+public class Client {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@Column(nullable = false)
 	private String name;
-	
+
 	@Column(nullable = false, unique = true)
-	private String email;
-	
-	@Column(nullable = false)
-	private String password;
-		
-	@Column(nullable = false , updatable = false)
+	private String doc;
+
+	@Column(nullable = true)
+	private long sis_id;
+
+	@Column(nullable = false, columnDefinition = "tinyint(1) default 0")
+	private boolean is_stok;
+
+	@Column(nullable = true, updatable = false)
 	@CreationTimestamp
 	private Timestamp created_at;
-	
-	@Column(nullable = true , updatable = true)
+
+	@Column(nullable = true, updatable = true)
 	@UpdateTimestamp
 	private Timestamp updated_at;
 
 	/**
-	 * @return the id
+	 * @return
 	 */
 	public long getId() {
 		return id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
 	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
 	/**
-	 * @return the name
+	 * @return
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @return the email
+	 * @return
 	 */
-	public String getEmail() {
-		return email;
+	public String getDoc() {
+		return doc;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param doc
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDoc(String doc) {
+		this.doc = doc;
 	}
 
 	/**
-	 * @return the password
+	 * @return
 	 */
-	public String getPassword() {
-		return password;
+	public long getSis_id() {
+		return sis_id;
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param sis_id
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSis_id(long sis_id) {
+		this.sis_id = sis_id;
 	}
 
 	/**
-	 * @return the created_at
+	 * @return
+	 */
+	public boolean getIs_stok() {
+		return is_stok;
+	}
+
+	/**
+	 * @param is_stok
+	 */
+	public void setIs_stok(boolean is_stok) {
+		this.is_stok = is_stok;
+	}
+
+	/**
+	 * @return
 	 */
 	public Timestamp getCreated_at() {
 		return created_at;
 	}
 
 	/**
-	 * @param created_at the created_at to set
+	 * @param created_at
 	 */
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
 
 	/**
-	 * @return the updated_at
+	 * @return
 	 */
 	public Timestamp getUpdated_at() {
 		return updated_at;
 	}
 
 	/**
-	 * @param updated_at the updated_at to set
+	 * @param updated_at
 	 */
 	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
 	}
-	
-	
-	
 
 }
